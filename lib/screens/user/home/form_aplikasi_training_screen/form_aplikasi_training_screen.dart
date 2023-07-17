@@ -12,14 +12,16 @@ class FormAplikasiTrainingScreen extends StatefulWidget {
       _FormAplikasiTrainingScreenState();
 }
 
+List<String> options = ['Tinggi', 'Normal', 'Rendah'];
+
 class _FormAplikasiTrainingScreenState
     extends State<FormAplikasiTrainingScreen> {
-  bool? isCheckedTinggi = false;
-  bool? isCheckedNormal = false;
-  bool? isCheckedRendah = false;
+  String currentOption = options[0];
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -57,73 +59,37 @@ class _FormAplikasiTrainingScreenState
             const SizedBox(
               height: sizedBoxHeightShort,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Row(
-                  children: [
-                    Checkbox(
-                        value: isCheckedTinggi,
-                        onChanged: (newBoolTinggi) {
-                          setState(() {
-                            isCheckedTinggi = newBoolTinggi;
-                          });
-                        }),
-                    const Text(
-                      'Tinggi',
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                          color: Color(primaryBlack),
-                          fontSize: textSmall,
-                          fontFamily: 'Poppins',
-                          letterSpacing: 0.9,
-                          fontWeight: FontWeight.w300),
-                    ),
-                  ],
+            Container(
+              height: size.height * 0.05,
+              width: size.width,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(5.0),
+              ),
+              child: ListTile(
+                title: const Text('Tinggi'),
+                leading: Radio(
+                  value: options[0],
+                  groupValue: currentOption,
+                  onChanged: (value) {
+                    setState(() {
+                      currentOption = value.toString();
+                    });
+                  },
                 ),
-                Row(
-                  children: [
-                    Checkbox(
-                        value: isCheckedNormal,
-                        onChanged: (newBoolNormal) {
-                          setState(() {
-                            isCheckedNormal = newBoolNormal;
-                          });
-                        }),
-                    const Text(
-                      'Normal',
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                          color: Color(primaryBlack),
-                          fontSize: textSmall,
-                          fontFamily: 'Poppins',
-                          letterSpacing: 0.9,
-                          fontWeight: FontWeight.w300),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Checkbox(
-                        value: isCheckedRendah,
-                        onChanged: (newBoolRendah) {
-                          setState(() {
-                            isCheckedRendah = newBoolRendah;
-                          });
-                        }),
-                    const Text(
-                      'Rendah',
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                          color: Color(primaryBlack),
-                          fontSize: textSmall,
-                          fontFamily: 'Poppins',
-                          letterSpacing: 0.9,
-                          fontWeight: FontWeight.w300),
-                    ),
-                  ],
-                ),
-              ],
+              ),
+            ),
+            ListTile(
+              title: const Text('Tinggi'),
+              leading: Radio(
+                value: options[0],
+                groupValue: currentOption,
+                onChanged: (value) {
+                  setState(() {
+                    currentOption = value.toString();
+                  });
+                },
+              ),
             ),
             const SizedBox(
               height: sizedBoxHeightTall,

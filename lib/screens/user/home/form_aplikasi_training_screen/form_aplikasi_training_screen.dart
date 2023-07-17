@@ -20,8 +20,6 @@ class _FormAplikasiTrainingScreenState
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -59,30 +57,34 @@ class _FormAplikasiTrainingScreenState
             const SizedBox(
               height: sizedBoxHeightShort,
             ),
-            Container(
-              height: size.height * 0.05,
-              width: size.width,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(5.0),
-              ),
-              child: ListTile(
-                title: const Text('Tinggi'),
-                leading: Radio(
-                  value: options[0],
-                  groupValue: currentOption,
-                  onChanged: (value) {
-                    setState(() {
-                      currentOption = value.toString();
-                    });
-                  },
-                ),
-              ),
-            ),
             ListTile(
               title: const Text('Tinggi'),
               leading: Radio(
                 value: options[0],
+                groupValue: currentOption,
+                onChanged: (value) {
+                  setState(() {
+                    currentOption = value.toString();
+                  });
+                },
+              ),
+            ),
+            ListTile(
+              title: const Text('Normal'),
+              leading: Radio(
+                value: options[1],
+                groupValue: currentOption,
+                onChanged: (value) {
+                  setState(() {
+                    currentOption = value.toString();
+                  });
+                },
+              ),
+            ),
+            ListTile(
+              title: const Text('Rendah'),
+              leading: Radio(
+                value: options[2],
                 groupValue: currentOption,
                 onChanged: (value) {
                   setState(() {
